@@ -50,26 +50,26 @@ df = pd.read_csv('solar_power_data_fixed_datetime.csv', parse_dates=['Date-Hour(
 print(df.info())
 print(df.head())
 
-#🧠 Potential Use Cases
+# 🧠 Potential Use Cases
 Solar energy production forecasting
 Machine learning and AI modeling for renewable energy optimization
 Correlation analysis between weather parameters and power generation
 Time-series forecasting and environmental trend analysis
 Smart grid and sustainability research projects
 
-#🏷️ Source
+# 🏷️ Source
 Original dataset collected from Solar Power Plant Monitoring Systems.
 Cleaned and processed using Python (Pandas, NumPy, Scikit-learn) for educational and research purposes.
 
-#📜 License
+# 📜 License
 This cleaned dataset is released for educational and research purposes only.
 Please cite this repository and the original dataset source if used in publications or research.
 
-#🤝 Contributing
+# 🤝 Contributing
 Contributions are welcome!
 Feel free to fork this repository, create a branch, and submit a Pull Request with improvements, model experiments, or data visualizations.
 
-#👩‍💻 Author
+# 👩‍💻 Author
 Maintained by Sania Bairagdar
 Computer Science Engineering Student
 Demonstrating data cleaning, preprocessing, and solar energy prediction using machine learning

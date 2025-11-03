@@ -2,14 +2,14 @@
 This repository contains a cleaned and preprocessed Solar Power Generation Dataset prepared for machine learning-based solar energy prediction.
 It includes environmental and weather parameters that influence solar power production, such as radiation, sunshine duration, temperature, and humidity.
 
-ℹ️ Original Dataset Information
+# ℹ️ Original Dataset Information
 Source: Solar Plant Observation Logs
 Time Period: Several months of hourly data collection
 Sampling Rate: 1 hour
 Number of Measurements: 1,801 records (after cleaning)
 Target Variable: Estimated solar energy output (EstimatedEnergy)
 
-📊 Dataset Overview
+# 📊 Dataset Overview
 Column	Description	Unit
 Date-Hour(NMT)	Combined date and time of observation	—
 WindSpeed	Wind speed at the solar plant site	m/s
@@ -23,7 +23,7 @@ day	Extracted day of the month	—
 month	Extracted month	—
 EstimatedEnergy	Derived solar power output value	kWh
 
-🧹 Cleaning Steps Performed
+# 🧹 Cleaning Steps Performed
 Combined and standardized Date and Time into a single Date-Hour(NMT) column.
 Dropped rows with missing or invalid timestamps.
 Replaced negative values in Radiation and AirTemperature with realistic corrected values.
@@ -36,40 +36,40 @@ Created a new target feature EstimatedEnergy using Radiation, Sunshine, and AirT
 Removed outliers and ensured no duplicate rows remained.
 Saved the final cleaned file ready for ML model training and forecasting.
 
-📦 Files Included
+# 📦 Files Included
 File	Description
 solar_power_data_with_energy.csv	Dataset containing the derived target (EstimatedEnergy)
 solar_energy_cleaning_script.ipynb	Python/Colab notebook used for data cleaning and preparation
 README.md	This documentation file
 
-⚙️ Example Usage
+# ⚙️ Example Usage
 import pandas as pd
-# Load cleaned dataset
+ Load cleaned dataset
 df = pd.read_csv('solar_power_data_fixed_datetime.csv', parse_dates=['Date-Hour(NMT)'])
-# Display info
+ Display info
 print(df.info())
 print(df.head())
 
-🧠 Potential Use Cases
+#🧠 Potential Use Cases
 Solar energy production forecasting
 Machine learning and AI modeling for renewable energy optimization
 Correlation analysis between weather parameters and power generation
 Time-series forecasting and environmental trend analysis
 Smart grid and sustainability research projects
 
-🏷️ Source
+#🏷️ Source
 Original dataset collected from Solar Power Plant Monitoring Systems.
 Cleaned and processed using Python (Pandas, NumPy, Scikit-learn) for educational and research purposes.
 
-📜 License
+#📜 License
 This cleaned dataset is released for educational and research purposes only.
 Please cite this repository and the original dataset source if used in publications or research.
 
-🤝 Contributing
+#🤝 Contributing
 Contributions are welcome!
 Feel free to fork this repository, create a branch, and submit a Pull Request with improvements, model experiments, or data visualizations.
 
-👩‍💻 Author
+#👩‍💻 Author
 Maintained by Sania Bairagdar
 Computer Science Engineering Student
 Demonstrating data cleaning, preprocessing, and solar energy prediction using machine learning

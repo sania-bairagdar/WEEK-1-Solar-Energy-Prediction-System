@@ -27,32 +27,43 @@ It includes environmental and weather parameters that influence solar power prod
 | **Time**          | Time of observation                | hh:mm:ss   |
 
 # 🧹 Cleaning Steps Performed
-Standardized Date and Time columns for uniform formatting
-Dropped rows with missing or invalid timestamps
-Replaced negative or unrealistic values in Radiation and Temperature with corrected estimates
-Filled missing numeric entries using median or mode imputation
-Converted all numeric features to consistent float64/int64 data types
-Extracted hour, day, and month from timestamp data for temporal analysis
-Normalized solar radiation and other continuous features for improved model performance
-Detected and removed outliers and duplicate rows
-Verified logical physical limits for temperature, humidity, wind speed, and radiation
-Saved the cleaned dataset as SolarPrediction_cleaned.csv, ready for machine learning model training and solar energy forecasting
+Standardized Date and Time columns for consistent formatting and combined them into a single timestamp (Date-Hour(NMT)).
+Dropped rows with missing, invalid, or duplicate timestamps to ensure temporal accuracy.
+Converted all numeric columns (e.g., Temperature, Pressure, Humidity, WindDirection(Degrees), Speed, Radiation) to consistent float64 or int64 data types.
+Replaced negative or unrealistic values in Radiation, Temperature, and other physical parameters with corrected estimates based on logical bounds.
+Filled missing numeric entries using median or mode imputation to preserve data integrity.
+Verified physical limits for weather-based parameters such as temperature (°C), humidity (%), wind speed (m/s), and radiation (W/m²).
+Extracted temporal features — hour, day, and month — to enable time-based energy forecasting.
+Normalized continuous features like radiation, temperature, and wind speed for improved model performance and faster convergence.
+Detected and removed outliers using statistical thresholds (z-score / IQR-based filtering).
+Ensured no duplicate or inconsistent rows remained after preprocessing.
+Saved the cleaned dataset as SolarPrediction_cleaned.csv, ready for use in machine learning–based solar energy prediction and forecasting models.g
 
 # 📦 Files Included
-File	Description
 | File Name                              | Description                                                                                                                                             |
-| -------------------------------------- 
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **solar_power_data_with_energy.csv**   | Final cleaned dataset containing all meteorological features and the derived target column **`EstimatedEnergy`**, ready for ML training and forecasting |
 | **solar_energy_cleaning_script.ipynb** | Jupyter/Google Colab notebook used for data cleaning, preprocessing, and feature generation                                                             |
-| **README.md**                          | Documentation file explaining dataset details, cleaning steps, and usage instructions                                              
+| **README.md**                          | Documentation file explaining dataset details, cleaning steps, and usage instructions                                                                   |
+****
 
 # ⚙️ Example Usage
 import pandas as pd
- Load cleaned dataset
-df = pd.read_csv('solar_power_data_fixed_datetime.csv', parse_dates=['Date-Hour(NMT)'])
- Display info
-print(df.info())
+
+Load the cleaned dataset
+df = pd.read_csv('SolarPrediction_cleaned.csv')
+
+Display dataset information
+print("Dataset Shape:", df.shape)
+print("\nColumn Names:", df.columns.tolist())
+
+Preview the first few rows
+print("\nSample Data:")
 print(df.head())
+
+Optional: check for any missing values
+print("\nMissing Values per Column:")
+print(df.isnull().sum())
 
 # 🧠 Potential Use Cases
 Solar energy production forecasting

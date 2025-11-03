@@ -3,44 +3,48 @@ This repository contains a cleaned and preprocessed Solar Power Generation Datas
 It includes environmental and weather parameters that influence solar power production, such as radiation, sunshine duration, temperature, and humidity.
 
 # ℹ️ Original Dataset Information
-Source: Solar Plant Observation Logs
-Time Period: Several months of hourly data collection
-Sampling Rate: 1 hour
-Number of Measurements: 1,801 records (after cleaning)
-Target Variable: Estimated solar energy output (EstimatedEnergy)
+| Detail            | Description                                             |
+| ----------------- | ------------------------------------------------------- |
+| **Source**        | Solar Prediction Dataset                                |
+| **Purpose**       | Predict solar radiation based on environmental features |
+| **Sampling Rate** | Periodic weather observations                           |
+| **Total Records** | 32,000+ (after cleaning)                                |
+| **File Type**     | CSV                                                     |
+
 
 # 📊 Dataset Overview
-Column	Description	Unit
-Date-Hour(NMT)	Combined date and time of observation	—
-WindSpeed	Wind speed at the solar plant site	m/s
-Sunshine	Duration of sunlight exposure	hours
-AirPressure	Atmospheric pressure during the reading	hPa
-Radiation	Solar radiation intensity	W/m²
-AirTemperature	Ambient air temperature	°C
-RelativeAirHumidity	Relative humidity in the air	%
-hour	Extracted hour from timestamp	—
-day	Extracted day of the month	—
-month	Extracted month	—
-EstimatedEnergy	Derived solar power output value	kWh
+| Column            | Description                        | Unit       |
+| ----------------- | ---------------------------------- | ---------- |
+| **Temperature**   | Ambient temperature                | °C         |
+| **Pressure**      | Atmospheric pressure               | hPa        |
+| **Humidity**      | Relative humidity                  | %          |
+| **WindDirection** | Wind direction                     | degrees    |
+| **Speed**         | Wind speed                         | m/s        |
+| **TimeSunRise**   | Local sunrise time                 | hh:mm:ss   |
+| **TimeSunSet**    | Local sunset time                  | hh:mm:ss   |
+| **Radiation**     | Solar radiation intensity (Target) | W/m²       |
+| **Date**          | Date of observation                | yyyy-mm-dd |
+| **Time**          | Time of observation                | hh:mm:ss   |
 
 # 🧹 Cleaning Steps Performed
-Combined and standardized Date and Time into a single Date-Hour(NMT) column.
-Dropped rows with missing or invalid timestamps.
-Replaced negative values in Radiation and AirTemperature with realistic corrected values.
-Filled missing numeric fields using median or mode imputation.
-Removed constant or redundant columns (SystemProduction, etc.).
-Converted all numeric columns to proper data types (float64 or int64).
-Extracted hour, day, and month for time-based analysis.
-Normalized Sunshine within the range 0–12 hours.
-Created a new target feature EstimatedEnergy using Radiation, Sunshine, and AirTemperature.
-Removed outliers and ensured no duplicate rows remained.
-Saved the final cleaned file ready for ML model training and forecasting.
+Standardized Date and Time columns for uniform formatting
+Dropped rows with missing or invalid timestamps
+Replaced negative or unrealistic values in Radiation and Temperature with corrected estimates
+Filled missing numeric entries using median or mode imputation
+Converted all numeric features to consistent float64/int64 data types
+Extracted hour, day, and month from timestamp data for temporal analysis
+Normalized solar radiation and other continuous features for improved model performance
+Detected and removed outliers and duplicate rows
+Verified logical physical limits for temperature, humidity, wind speed, and radiation
+Saved the cleaned dataset as SolarPrediction_cleaned.csv, ready for machine learning model training and solar energy forecasting
 
 # 📦 Files Included
 File	Description
-solar_power_data_with_energy.csv	Dataset containing the derived target (EstimatedEnergy)
-solar_energy_cleaning_script.ipynb	Python/Colab notebook used for data cleaning and preparation
-README.md	This documentation file
+| File Name                              | Description                                                                                                                                             |
+| -------------------------------------- 
+| **solar_power_data_with_energy.csv**   | Final cleaned dataset containing all meteorological features and the derived target column **`EstimatedEnergy`**, ready for ML training and forecasting |
+| **solar_energy_cleaning_script.ipynb** | Jupyter/Google Colab notebook used for data cleaning, preprocessing, and feature generation                                                             |
+| **README.md**                          | Documentation file explaining dataset details, cleaning steps, and usage instructions                                              
 
 # ⚙️ Example Usage
 import pandas as pd
